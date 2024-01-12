@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>荔园一食堂</title>
+		<meta charset="utf-8">
+		<style type="text/css">
+			#title{
+				position: absolute;
+				left: 0%;
+				top: 0%;
+			}
+			
+			#img{
+				position: absolute;
+				left: 2%;     /*距离左侧边界的距离*/
+				top: 15%;	  /*距离上边界的距离*/
+				border: 8px solid #215cc1;     /*图片边框(非必要可删)*/
+				margin: 5px;		/*边框外围边距（留白距离）*/
+			}
+			
+			#leftswitcher{
+				position: absolute;
+				left:2%;
+				top:45%;
+			}
+			
+			#rightswitcher{
+				position: absolute;
+				left:52%;
+				top:45%;
+			}
+			
+			#profile{										/*简介栏格式*/
+				position: absolute;
+				left: 60%;     /*距离左侧边界的距离*/
+				top: 6%;	  /*距离上边界的距离*/
+			}
+			
+			#profile #subtitle{								/*简介栏小标题格式*/
+				color: white;
+				background-color: #215cc1;
+				padding: 25px;
+				border: 2px solid white;
+				font-family: "苹方";			/*字体*/
+				font-size: 90px;       /*文字尺寸*/
+				font-weight: normal;			/*首行缩进量（非必要可删）*/
+				text-align: center; 		 /*对齐方式*/
+			}
+				
+		</style>
+
+	</head>
+	<body>
+		<div id="title">
+			<a href="https://asatsuki_yukiori.gitee.io/asatsuki.gitee.io/index.html"><img src="title.png" width="100%"></a>
+		</div>
+		<div>
+			<img id="img" alt ="一食堂" src = "./Canteen/Canteen_1_1.jpg" width = "800px" height = "600px" />
+			<a href=javascript:Switcher(1)><img id="leftswitcher" src="./LeftSwitcher.png" width="50px"></a>
+			<a href=javascript:Switcher(2)><img id="rightswitcher" src="./RightSwitcher.png" width="50px"></a>
+		</div>
+			
+		<div id = "profile">
+			<p id="subtitle">荔园一食堂</p>
+			<img id="map" src="./Canteen/Position_1.png" width="500px" />
+		</div>
+	</body>
+</html> 
+
+
+
+<script type="text/javascript">
+			var currentOrder = 1;
+			
+				var oImg = document.getElementById("img");
+				
+				function Switcher(direction) {
+					if(direction == 1) {
+						if(currentOrder == 1) {
+							currentOrder = 3;
+						}
+						else {
+							currentOrder--;
+						}
+					}
+					else if(direction == 2){
+						if(currentOrder == 3) {
+							currentOrder = 1;
+						}
+						else {
+							currentOrder++;
+						}
+					}
+					
+					oSrc = "./Canteen/Canteen_1_" + currentOrder + ".jpg";
+					oImg.src = oSrc;
+				}
+				
+</script>

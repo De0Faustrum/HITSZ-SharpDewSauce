@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Dialoue</title>
+		<style type="text/css">
+			#background{
+				position: fixed;
+				top:0px;
+				left:0px;
+				width: 100%;
+				z-index: -101;
+			}
+			#top{
+				padding: 10px;
+			}
+			#top a{
+				display: inline-block;
+				text-align: left;
+				text-decoration: none;
+				font-family: "苹方";
+				color: #111111;
+				font-size: 28px;
+			}
+			#top #botname{
+				display: inline-block;
+				text-align: center;
+				font-family: "苹方";
+				font-size: 28px;
+			}
+			#Frame{
+				text-align: center;
+			}
+			#ChatBox{
+				display: inline-block;
+				width: 53%;
+				height:	5000px;
+				border: 5px solid black;
+				border-radius: 60px;
+				text-align: left;
+				padding-top: 20px;
+			}
+			textarea{
+				position: fixed;
+				bottom: 10px;
+				left:24%;
+				width: 44%;
+				font-size: 24px;
+				border: 3px solid silver;
+				border-radius: 20px;
+			}
+			input[type="button"]{
+				position: fixed;
+				bottom: 12px;
+				left: 69%;
+				width: 6.5%;
+				height: 90px;
+			}
+			/*#tip{
+				font-family: "苹方";
+				font-size: 24px;
+				font-weight: bold;
+				position: absolute;
+				bottom: 28px;
+				left: 1185px;
+			}*/
+		</style>
+        <script src="Sakura.js"></script>
+		<script>
+			var suggested_dish_name;
+			
+			function intentionJudge(str) {	//判断用户意图
+				if(str.match("投诉") != null) {			//0表示跳转至投诉页面
+					return 0;							
+				}
+			
+				if(str.match("想") != null) {			//1表示用户指定食材关键词
+					return 1;							//如“我想吃牛肉”
+				}
+				else if(str.match("要") != null){
+					return 1;
+				}
+				else if(str.match("哪") != null){
+					return 1;
+				}
+				else if(str.match("谁") != null){
+					return 1;
+				}
+				
+				else if(str.match("食堂") != null){		//2表示用户指定用餐地点
+					return 2;							//如“清华食堂有什么好吃的？”
+				}
+				
+				else{									//开放式菜品推荐
+					return 3;							//如“中午有什么推荐菜吗？”
+				}
+				
+				
+			}
+			
+			
+			function attributeDetermine(str) {
+				if(str.match("腿") != null){
+					return "腿";
+				}
+				if(str.match("鸡") != null){
+					return "鸡";
+				}
+				if(str.match("鱼") != null){
+					return "鱼";
+				}
+				if(str.match("酸菜鱼") != null){
+					return "酸菜鱼";
+				}
+				if(str.match("排") != null){
+					return "排";
+				}
+				else if(str.match("牛") != null){
+					return "牛";
+				}
+				else if(str.match("虾") != null){
+					return "虾";
+				}
+				else if(str.match("鱼") != null){
+					return "鱼";
+				}
+				else if(str.match("猪脚") != null){
+					return "猪脚";
+				}
+				else if(str.match("蛙") != null){
+					return "蛙";
+				}
+				else if(str.match("鸭") != null){
+					return "鸭";
+				}
+				else if(str.match("叉烧") != null){
+					return "叉烧";
+				}
+				else if(str.match("石锅") != null){
+					return "石锅";
+				}
+				else if(str.match("麻辣") != null){
+					return "麻辣";
+				}
+				else if(str.match("饼") != null){
+					return "饼";
+				}
+				else if(str.match("面") != null){
+					return "面";
+				}
+				else if(str.match("米线") != null){
+					return "米线";
+				}
+				else if(str.match("饺") != null){
+					return "饺";
+				}
+				else if(str.match("粉") != null){
+					return "粉";
+				}
+				else if(str.match("螺蛳粉") != null){
+					return "螺蛳粉";
+				}
+				else if(str.match("菇") != null){
+					return "菇";
+				}
+				else if(str.match("番茄") != null){
+					return "番茄";
+				}
+				else if(str.match("笋") != null){
+					return "笋";
+				}
+				else if(str.match("咖喱") != null){
+					return "咖喱";
+				}
+				else if(str.match("玉米") != null){
+					return "玉米";
+				}
+				else if(str.match("韭菜") != null){
+					return "韭菜";
+				}
+				else if(str.match("白菜") != null){
+					return "白菜";
+				}
+				else if(str.match("云吞") != null){
+					return "云吞";
+				}
+				else if(str.match("馄饨") != null){
+					return "云吞";
+				}
+				else if(str.match("脆骨") != null){
+					return "脆骨";
+				}
+				else if(str.match("粥") != null){
+					return "粥";
+				}
+				else if(str.match("奶") != null){
+					return "奶";
+				}
+				else if(str.match("酸菜") != null){
+					return "酸菜";
+				}
+				else if(str.match("土豆") != null){
+					return "土豆";
+				}
+				else if(str.match("榴莲") != null){
+					return "榴莲";
+				}
+				else if(str.match("菠萝") != null){
+					return "菠萝";
+				}
+				else if(str.match("芝士") != null){
+					return "芝士";
+				}
+				else if(str.match("寿司") != null){
+					return "寿司";
+				}
+				else if(str.match("辣") != null){
+					return "辣";
+				}
+				else if(str.match("粉") != null){
+					return "粉";
+				}
+				else if(str.match("腊") != null){
+					return "腊";
+				}
+				else if(str.match("肉") != null){
+					return "肉";
+				}
+			}
+			
+			function positionDetermine(str) {
+				if(str.match("一食堂") != null) {
+					return "一食堂";
+				}
+				else if(str.match("二食堂") != null){
+					return "二食堂";
+				}
+				else if(str.match("三食堂") != null){
+					return "三食堂";
+				}
+				else if(str.match("四食堂") != null){
+					return "四食堂";
+				}
+				else if(str.match("清华") != null){
+					return "清华食堂";
+				}
+				else if(str.match("北大") != null){
+					return "北大食堂";
+				}
+				else if(str.match("麦当劳") != null){
+					return "麦当劳";
+				}
+				else {
+					return "";
+				}
+				
+			}
+			
+			function replyTxt(str) {
+				var oChatBox = document.getElementById("ChatBox");
+				var oBtn = document.getElementById("submit");
+				var oBotTxt = document.createElement("strong");
+				var oBotText = document.createTextNode(str);
+				var oBotBox = document.createElement("div");
+				var oBotAvatar = document.createElement("img");
+				oBotAvatar.src="./Hikari.png";
+				
+				oBotAvatar.setAttribute("width","60px");
+				oBotTxt.appendChild(oBotText);
+				oBotBox.appendChild(oBotAvatar);
+				oBotBox.appendChild(oBotTxt);
+				oChatBox.appendChild(oBotBox);
+				
+				oBotTxt.style.textAlign = "left";
+				oBotTxt.style.fontFamily = "苹方";
+				oBotTxt.style.fontSize = "30px";
+				oBotTxt.style.border="2px solid black";				
+				oBotBox.style.textAlign="left";
+				oBotTxt.style.padding="13px 10px 13px 10px";
+				oBotTxt.style.margin="5px";
+				oBotBox.style.padding="5px";
+				oBotTxt.style.borderTopLeftRadius="40px";
+				oBotTxt.style.borderTopRightRadius="40px";
+				oBotTxt.style.borderBottomLeftRadius="40px";
+				oBotTxt.style.borderBottomRightRadius="40px";
+				oBotBox.style.marginBottom="10px";
+				oBotTxt.style.backgroundColor="#ffffff80";
+			}
+		
+			function replyImg(dishname) {
+				path = "./menu/img/" + dishname + ".jpg";
+				
+				var oChatBox = document.getElementById("ChatBox");
+				var oBtn = document.getElementById("submit");
+				var oBotTxt = document.createElement("strong");
+				var oBotText = document.createTextNode("");
+				var oBotImg = document.createElement("img");
+				var oBotHyperlink = document.createElement("a");
+				oHref = "./menu/" + dishname + ".html";
+				oBotHyperlink.href = oHref;
+				oBotImg.src = path;
+				oBotImg.setAttribute("width", "300px");
+				oBotImg.setAttribute("height", "300px");
+				oBotImg.style.verticalAlign = "top";
+				oBotImg.style.border = "5px solid silver";
+				oBotImg.style.margin = "5px";
+				oBotImg.style.borderRadius = "50px";
+				
+				var oBotBox = document.createElement("div");
+				var oBotAvatar = document.createElement("img");
+				oBotAvatar.src="Hikari.png";
+				
+				oBotAvatar.setAttribute("width","60px");
+				oBotTxt.appendChild(oBotText);
+				oBotBox.appendChild(oBotAvatar);
+				oBotHyperlink.appendChild(oBotImg);
+				oBotBox.appendChild(oBotHyperlink);
+				oChatBox.appendChild(oBotBox);
+				
+				oBotTxt.style.textAlign = "left";
+				oBotTxt.style.fontFamily = "苹方";
+				oBotTxt.style.fontSize = "30px";
+				oBotTxt.style.border="2px solid black";				
+				oBotBox.style.textAlign="left";
+				oBotTxt.style.padding="20px 5px 5px 5px";
+				oBotTxt.style.margin="5px";
+				oBotBox.style.padding="5px";
+			}
+				
+			
+			window.onload = function(){
+				
+				{//greeting_1
+					var oChatBox = document.getElementById("ChatBox");
+					var oBtn = document.getElementById("submit");
+					var oBotTxt = document.createElement("strong");
+					var oBotText = document.createTextNode("您好，我是HITSZ健康饮食小助手锋露酱!");
+					var oBotBox = document.createElement("div");
+					var oBotAvatar = document.createElement("img");
+					oBotAvatar.src="Hikari.png";
+					
+					oBotAvatar.setAttribute("width","60px");
+					oBotTxt.appendChild(oBotText);
+					oBotBox.appendChild(oBotAvatar);
+					oBotBox.appendChild(oBotTxt);
+					oChatBox.appendChild(oBotBox);
+					
+					oBotTxt.style.textAlign = "left";
+					oBotTxt.style.fontFamily = "苹方";
+					oBotTxt.style.fontSize = "30px";
+					oBotTxt.style.border="2px solid black";				
+					oBotBox.style.textAlign="left";
+					oBotTxt.style.padding="13px 10px 13px 10px";
+					oBotTxt.style.margin="5px";
+					oBotBox.style.padding="5px";
+					oBotTxt.style.borderTopLeftRadius="40px";
+					oBotTxt.style.borderTopRightRadius="40px";
+					oBotTxt.style.borderBottomLeftRadius="40px";
+					oBotTxt.style.borderBottomRightRadius="40px";
+					oBotBox.style.marginBottom="10px";
+					oBotTxt.style.backgroundColor="#ffffff80";
+				}
+
+				{//greeting_2
+					var oChatBox = document.getElementById("ChatBox");
+					var oBtn = document.getElementById("submit");
+					var oBotTxt = document.createElement("strong");
+					var oBotText = document.createTextNode("请问今天您想吃些什么？您可以像这样问我：");
+					var oBotBox = document.createElement("div");
+					var oBotAvatar = document.createElement("img");
+					oBotAvatar.src="Hikari.png";
+					
+					oBotAvatar.setAttribute("width","60px");
+					oBotTxt.appendChild(oBotText);
+					oBotBox.appendChild(oBotAvatar);
+					oBotBox.appendChild(oBotTxt);
+					oChatBox.appendChild(oBotBox);
+					
+					oBotTxt.style.textAlign = "left";
+					oBotTxt.style.fontFamily = "苹方";
+					oBotTxt.style.fontSize = "30px";
+					oBotTxt.style.border="2px solid black";				
+					oBotBox.style.textAlign="left";
+					oBotTxt.style.padding="13px 10px 13px 10px";
+					oBotTxt.style.margin="5px";
+					oBotBox.style.padding="5px";
+					oBotTxt.style.borderTopLeftRadius="40px";
+					oBotTxt.style.borderTopRightRadius="40px";
+					oBotTxt.style.borderBottomLeftRadius="40px";
+					oBotTxt.style.borderBottomRightRadius="40px";
+					oBotBox.style.marginBottom="10px";
+					oBotTxt.style.backgroundColor="#ffffff80";
+				}
+					
+				{//greeting_3
+					var oChatBox = document.getElementById("ChatBox");
+					var oBtn = document.getElementById("submit");
+					var oBotTxt = document.createElement("strong");
+					var oBotText = document.createTextNode("#我想吃牛肉");
+					var oBotBox = document.createElement("div");
+					var oBotAvatar = document.createElement("img");
+					oBotAvatar.src="Hikari.png";
+					
+					oBotAvatar.setAttribute("width","60px");
+					oBotTxt.appendChild(oBotText);
+					oBotBox.appendChild(oBotAvatar);
+					oBotBox.appendChild(oBotTxt);
+					oChatBox.appendChild(oBotBox);
+					
+					oBotTxt.style.textAlign = "left";
+					oBotTxt.style.fontFamily = "苹方";
+					oBotTxt.style.fontSize = "30px";
+					oBotTxt.style.border="2px solid black";				
+					oBotBox.style.textAlign="left";
+					oBotTxt.style.padding="13px 10px 13px 10px";
+					oBotTxt.style.margin="5px";
+					oBotBox.style.padding="5px";
+					oBotTxt.style.borderTopLeftRadius="40px";
+					oBotTxt.style.borderTopRightRadius="40px";
+					oBotTxt.style.borderBottomLeftRadius="40px";
+					oBotTxt.style.borderBottomRightRadius="40px";
+					oBotBox.style.marginBottom="10px";
+					oBotTxt.style.backgroundColor="#ffffff80";
+				}				
+				
+				{//greeting_4
+					var oChatBox = document.getElementById("ChatBox");
+					var oBtn = document.getElementById("submit");
+					var oBotTxt = document.createElement("strong");
+					var oBotText = document.createTextNode("#四食堂有什么好吃的？");
+					var oBotBox = document.createElement("div");
+					var oBotAvatar = document.createElement("img");
+					oBotAvatar.src="Hikari.png";
+					
+					oBotAvatar.setAttribute("width","60px");
+					oBotTxt.appendChild(oBotText);
+					oBotBox.appendChild(oBotAvatar);
+					oBotBox.appendChild(oBotTxt);
+					oChatBox.appendChild(oBotBox);
+					
+					oBotTxt.style.textAlign = "left";
+					oBotTxt.style.fontFamily = "苹方";
+					oBotTxt.style.fontSize = "30px";
+					oBotTxt.style.border="2px solid black";				
+					oBotBox.style.textAlign="left";
+					oBotTxt.style.padding="13px 10px 13px 10px";
+					oBotTxt.style.margin="5px";
+					oBotBox.style.padding="5px";
+					oBotTxt.style.borderTopLeftRadius="40px";
+					oBotTxt.style.borderTopRightRadius="40px";
+					oBotTxt.style.borderBottomLeftRadius="40px";
+					oBotTxt.style.borderBottomRightRadius="40px";
+					oBotBox.style.marginBottom="10px";
+					oBotTxt.style.backgroundColor="#ffffff80";
+				}
+				
+				var oUrl = "menu.json";
+				var oRequest = new XMLHttpRequest();
+				var Dishes = new Array();
+				oRequest.open("get", oUrl);
+				oRequest.send(null);
+				oRequest.onload = function(){
+				    if(oRequest.status == 200){
+				        var oJson = JSON.parse(oRequest.responseText);
+				        console.log(oJson);
+						var ol = document.getElementById("orderedlist");
+						
+						oJson.Menu.map(Menu => {
+							var dish = new Object();
+							dish.dish_name = Menu.DishName;
+							dish.attribute = Menu.KeyWord;
+							dish.position = Menu.Position;
+							dish.healthy_points = Menu.HealthyPoints;
+							dish.carbonhydrate = Menu.CarbonHydrate;
+							dish.protein = Menu.Protein;
+							dish.lipid = Menu.Lipid;
+							dish.vitamin_c = Menu.VitaminC;
+							Dishes.push(dish);
+							
+						});
+					}
+					
+						oBtn.onclick = function() {
+							var oTextarea = document.getElementById("txt");
+							var oSpan = document.createElement("div");
+							var oTxt = document.createTextNode(oTextarea.value);
+							oSpan.appendChild(oTxt);
+							var oUserTxt = document.createElement("strong");
+							oUserTxt.appendChild(oTxt);
+							var oUserAvatar = document.createElement("img");
+							var oUserBox = document.createElement("div");
+							oUserAvatar.src = "./Tairitsu.png";
+							oUserAvatar.setAttribute("width","60px");
+							
+							oUserTxt.style.textAlign = "right";
+							oUserTxt.style.fontFamily = "苹方";
+							oUserTxt.style.fontSize = "30px";
+							oUserTxt.style.border="2px solid black";
+							oUserBox.appendChild(oUserTxt);
+							oChatBox.appendChild(oUserBox);
+							oUserBox.appendChild(oUserAvatar);
+							oUserBox.style.textAlign="right";
+							oUserTxt.style.padding="13px 10px 13px 10px";
+							oUserTxt.style.margin="10px";
+							oUserBox.style.padding="5px";
+							oUserTxt.style.borderTopLeftRadius="40px";
+							oUserTxt.style.borderTopRightRadius="40px";
+							oUserTxt.style.borderBottomLeftRadius="40px";
+							oUserTxt.style.borderBottomRightRadius="40px";
+							oUserBox.style.marginBottom="10px";
+							oUserTxt.style.backgroundColor="#ffffff80";
+							
+							
+							
+							var oAttributedDishes = new Array;
+							var oIntention = intentionJudge(oTextarea.value);
+							if(oIntention == 1) {
+								var oAttribute = attributeDetermine(oTextarea.value);
+								
+							}
+							else if(oIntention == 2) {
+								var oPosition = positionDetermine(oTextarea.value);
+								
+							}
+							else if(oIntention == 0){
+								replyTxt("正在跳转至投诉页面......");
+								setTimeout(goComplaining,3000);
+								function goComplaining() {
+								   window.location.href="./Complain.html";
+								}
+								
+							}
+							else {
+								replyTxt("抱歉，锋露酱未能识别您的意图");
+							}
+							
+							if(oIntention == 1) {
+								for(var i = 0; i<Dishes.length; i++){
+									if(Dishes[i].attribute.match(oAttribute)){
+										oAttributedDishes.push(Dishes[i]);
+									}
+								}
+							}
+							
+							if(oIntention == 2) {
+								
+								for(var i = 0; i<Dishes.length; i++){
+									if(Dishes[i].position.match(oPosition)){
+										oAttributedDishes.push(Dishes[i]);
+									}
+								}
+							}		//end if
+				
+						var oRandom = Math.floor(Math.random()*(oAttributedDishes.length));
+						
+						replyTxt("我推荐" + oAttributedDishes[oRandom].position + "的" + oAttributedDishes[oRandom].dish_name);
+						suggested_dish_name = oAttributedDishes[oRandom].dish_name;
+						var t=setTimeout("replyImg(suggested_dish_name);",1000);
+						
+						if(oAttributedDishes[oRandom].vitamin_c < 4){
+							var t=setTimeout("replyTxt('健康饮食建议：多吃水果，补充VC');",2000);
+							
+						}
+						if(oAttributedDishes[oRandom].lipid > 4){
+							var t=setTimeout("replyTxt('健康饮食建议：加强运动');",3000);
+						}
+						
+					}			//end obtn
+				}				//end fileread
+			}					//end window.onload
+
+		</script>
+	</head>
+	<body>
+		
+		<div id="Frame">
+			<div id="ChatBox">
+				<div id="top">
+						<a href="index.html"><strong>&nbsp;&nbsp;<返回</strong></a>
+						<img id="background" src="./background.png"/>
+					<div id="botname">
+						<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HITSZ健康饮食小助手锋露酱</span>
+					</div>
+				</div>	
+				
+				<hr/>
+				<div id="InputBox">
+					<textarea id="txt" rows="3" cols="68"></textarea>
+					<input id="submit" type="button" value="发送">
+				</div>
+				
+				<div id="tip">
+					<br/>
+				</div>
+				
+			</div>
+		</div>
+		
+	</body>
+</html>

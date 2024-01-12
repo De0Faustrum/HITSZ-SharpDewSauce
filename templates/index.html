@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+		<title>HITSZ健康饮食小助手锋露酱</title>
+		<style type="text/css">
+
+			#background{
+				position: fixed;
+				z-index: -101;
+				width: 100%;
+			}
+			#intro{
+				text-align: left;
+			}
+			
+			#intro_link{
+				display: inline-block;
+				position: absolute;
+				top: 11%;
+				left: 32%;
+				width: 45%;
+				padding: 0px;
+				color: #215cc1;
+				
+			}
+			
+			#intro {
+				display:  inline-block;
+				padding: 0px;
+				border: 8px ridge #215CC1;
+				border-radius: 20px;
+			}
+			
+			
+			#copyright{
+				position: absolute;
+				right: 0%;
+				top: 10%;
+				margin: 10px;
+				border: 8px ridge #215CC1;
+				border-radius: 300px;
+			}
+			
+			#title{
+				position: absolute;
+				left: 0%;
+				top: 0%;
+			}
+			
+			#dishseries{
+				
+				text-align: center;
+				margin:10px;
+			}
+				
+			#dishblock{
+				position: absolute;
+				left:0%;
+				top: 11%;
+				text-align: center;
+				background-color: #52C5A480;
+				border: 5px groove #215CC1;
+				border-radius: 20px;
+				margin-left: 3px;
+			}
+			
+			#suggestion{
+				text-align: center;
+				color: #215CC1;
+				font-family: "苹方";
+				font-size: 36px;
+			}
+			
+			#flash{
+				height:30px;
+				filter: opacity(90%);
+				border-radius: 10px;
+			}
+			
+			#crblock #copyrightinfo{
+				text-align: center;
+				font-size: 16px;
+			}
+			
+			#crblock{
+				position: absolute;
+				left:79%;
+				top:49%;
+				width: 19%;
+				background-color: #F7E27780;
+				border: 8px groove #215CC1;
+				border-radius: 10px;
+				font-family: "苹方";
+				font-size: 14px;
+				padding: 0px 0px 0px 1px;
+			}
+			
+			.block{
+				display: inline-block;
+				border: 6px solid #ffffff;
+				margin: 5px 5px 5px 5px;
+			}
+			
+			.dishimg{
+				width: 200px;
+				height: 200px;
+			}
+			
+			.dishname{
+				color: #215CC1;
+				text-align: center;
+				font-size: 20px;
+				font-family: "苹方";
+			}
+			
+			#canteenblock{
+				display: inline-block;
+				position: absolute;
+				left:32%;
+				top:38%;
+				border: 8px ridge #215CC1;
+				border-radius: 20px;
+				background-color: #DB95CA90;
+				padding: 10px;
+			}
+			#ctprofile{
+				color: #215CC1;
+				font-weight: bold;
+				font-size: 24px;
+				font-family: "苹方";
+				text-align: center;
+				
+			}
+			
+			.ctblock{
+				display: inline-block;
+				border: 6px solid #ffffff;
+				margin: 0px 15px 5px 16px;
+			}
+			
+			#canteenblock .ctimg{
+				width: 180px;
+			}
+			
+			.ctname{
+				color: #215CC1;
+				text-align: center;
+				font-family: "苹方";
+			}
+		</style>
+		<script src="/static/Sakura.js">
+
+		</script>
+    </head>
+	
+	
+    <body>
+		<img id="background" src="/static/background.png"/>
+		<div id="back">
+            <img id="copyright" src="/static/Hikari.jpg" height="35%" />
+			
+			<div id="title">
+				<a href="https://www.hitsz.edu.cn/index.html"><img src="/static/menu/title.png" width="100%"></a>
+			</div>
+			
+			
+				<a id="intro_link" href="/static/Dialogue.html">
+					<img id="intro" src="/static/intro.png" width="100%" / >
+				</a>
+			
+			<div id="dishblock">
+				<p id="suggestion">推荐菜</p>
+				<a href=javascript:flasher()><img id="flash" src="/static/flash.png" height="30px"/></a>
+				<div id="dishseries">
+					<div class="block" id="block_1"><a id="hyperlink_1"><img class="dishimg" id="img_1"></a><p class="dishname" id="txt_1"><p></div>
+					<div class="block" id="block_2"><a id="hyperlink_2"><img class="dishimg" id="img_2"></a><p class="dishname" id="txt_2"><p></div>
+					<br/>
+					<div class="block" id="block_3"><a id="hyperlink_3"><img class="dishimg" id="img_3"></a><p class="dishname" id="txt_3"><p></div>
+					<div class="block" id="block_4"><a id="hyperlink_4"><img class="dishimg" id="img_4"></a><p class="dishname" id="txt_4"><p></div>
+				</div>
+			</div>
+			
+			<div id="canteenblock">
+					<p id="ctprofile">各食堂介绍</p>
+					<div class="ctblock"><a href ="/static/menu/Canteen_1.html"><img class="ctimg" src="/static/menu/Canteen/Canteen_1_1.jpg"></a><p class="ctname">荔园一食堂<p></div>
+					<div class="ctblock"><a href ="/static/menu/Canteen_2.html"><img class="ctimg" src="/static/menu/Canteen/Canteen_2_1.jpg"></a><p class="ctname">荔园二食堂<p></div>
+					<div class="ctblock"><a href ="/static/menu/Canteen_3.html"><img class="ctimg" src="/static/menu/Canteen/Canteen_3_1.jpg"></a><p class="ctname">荔园三食堂<p></div>
+					<br/>
+					<div class="ctblock"><a href ="/static/menu/Canteen_4.html"><img class="ctimg" src="/static/menu/Canteen/Canteen_4_1.jpg"></a><p class="ctname">荔园四食堂<p></div>
+					<div class="ctblock"><a href ="/static/menu/Canteen_THU.html"><img class="ctimg" src="/static/menu/Canteen/Canteen_THU_1.jpg"></a><p class="ctname">清华食堂<p></div>
+					<div class="ctblock"><a href ="/static/menu/Canteen_PKU.html"><img class="ctimg" src="/static/menu/Canteen/Canteen_PKU_1.jpg"></a><p class="ctname">北大食堂<p></div>
+									
+			</div>
+			
+			<div id="crblock">
+				<p id="copyrightinfo"><strong>版权信息</strong></p>
+				<p><strong>项目名称：</strong></p>
+				<p>基于垂直领域对话系统的HITSZ健康饮食助手</p>
+				<p><strong>项目所属：</strong></p>
+				<p>哈尔滨工业大学（深圳）计算机科学与技术学院</p>
+				<p><strong>项目小组成员：</strong></p>
+				<p>吕弋卿&nbsp;罗策&nbsp;杨锋露</p>
+				<p><strong>项目小组指导老师：</strong></p>
+				<p>户保田</p>
+				<p><strong>页面特效借鉴：</strong></p>
+				<p>blog.csdn.net/qq_48922459/article/</p>
+				<p>details/107026668</p>
+			</div>
+			
+		</div>
+    </body>
+</html>
+
+<script type="text/javascript">
+	var oAttributedDishes = new Array();
+	
+	var oUrl = "/static/menu.json";
+	var oRequest = new XMLHttpRequest();
+	var Dishes = new Array();
+	oRequest.open("get", oUrl);
+	oRequest.send(null);
+	oRequest.onload = function(){
+	    if(oRequest.status == 200){
+	        var oJson = JSON.parse(oRequest.responseText);
+	        console.log(oJson);
+			var ol = document.getElementById("orderedlist");
+			
+			oJson.Menu.map(Menu => {
+				var dish = new Object();
+				dish.dish_name = Menu.DishName;
+				dish.attribute = Menu.KeyWord;
+				dish.position = Menu.Position;
+				dish.healthy_points = Menu.HealthyPoints;
+				dish.carbonhydrate = Menu.CarbonHydrate;
+				dish.protein = Menu.Protein;
+				dish.lipid = Menu.Lipid;
+				dish.vitamin_c = Menu.VitaminC;
+				Dishes.push(dish);
+				
+			});	
+		}
+		
+		for(var i=0; i<Dishes.length; i++){
+				oAttributedDishes.push(Dishes[i]);
+		}
+		
+		var oRandom_1 = Math.floor(Math.random()*(oAttributedDishes.length));
+		var oRandom_2 = Math.floor(Math.random()*(oAttributedDishes.length));
+		var oRandom_3 = Math.floor(Math.random()*(oAttributedDishes.length));
+		var oRandom_4 = Math.floor(Math.random()*(oAttributedDishes.length));
+		
+		
+		var dishnametxt_1 = oAttributedDishes[oRandom_1].dish_name;
+		var dishnametxt_2 = oAttributedDishes[oRandom_2].dish_name;
+		var dishnametxt_3 = oAttributedDishes[oRandom_3].dish_name;
+		var dishnametxt_4 = oAttributedDishes[oRandom_4].dish_name;
+		
+		var oImg_1 = document.getElementById("img_1");
+		var oImg_2 = document.getElementById("img_2");
+		var oImg_3 = document.getElementById("img_3");
+		var oImg_4 = document.getElementById("img_4");
+		
+		var oDishName_1 = document.getElementById("txt_1");
+		var oDishName_2 = document.getElementById("txt_2");
+		var oDishName_3 = document.getElementById("txt_3");
+		var oDishName_4 = document.getElementById("txt_4");
+		
+		var oTxtNode_1 = document.createTextNode(dishnametxt_1);
+		var oTxtNode_2 = document.createTextNode(dishnametxt_2);
+		var oTxtNode_3 = document.createTextNode(dishnametxt_3);
+		var oTxtNode_4 = document.createTextNode(dishnametxt_4);
+		
+		var oHyperlink_1 = document.getElementById("hyperlink_1");
+		var oHyperlink_2 = document.getElementById("hyperlink_2");
+		var oHyperlink_3 = document.getElementById("hyperlink_3");
+		var oHyperlink_4 = document.getElementById("hyperlink_4");
+		
+		oHyperlink_1.href = "/static/menu/" + dishnametxt_1 +".html";
+		oHyperlink_2.href = "/static/menu/" + dishnametxt_2 +".html";
+		oHyperlink_3.href = "/static/menu/" + dishnametxt_3 +".html";
+		oHyperlink_4.href = "/static/menu/" + dishnametxt_4 +".html";
+		
+		oImg_1.src = "/static/menu/img/" + dishnametxt_1 + ".jpg";
+		oImg_2.src = "/static/menu/img/" + dishnametxt_2 + ".jpg";
+		oImg_3.src = "/static/menu/img/" + dishnametxt_3 + ".jpg";
+		oImg_4.src = "/static/menu/img/" + dishnametxt_4 + ".jpg";
+		
+		oDishName_1.appendChild(oTxtNode_1);
+		oDishName_2.appendChild(oTxtNode_2);
+		oDishName_3.appendChild(oTxtNode_3);
+		oDishName_4.appendChild(oTxtNode_4);
+		
+		}
+		
+		function flasher(){
+			var oRandom_1 = Math.floor(Math.random()*(oAttributedDishes.length));
+			var oRandom_2 = Math.floor(Math.random()*(oAttributedDishes.length));
+			var oRandom_3 = Math.floor(Math.random()*(oAttributedDishes.length));
+			var oRandom_4 = Math.floor(Math.random()*(oAttributedDishes.length));
+			
+			
+			var dishnametxt_1 = oAttributedDishes[oRandom_1].dish_name;
+			var dishnametxt_2 = oAttributedDishes[oRandom_2].dish_name;
+			var dishnametxt_3 = oAttributedDishes[oRandom_3].dish_name;
+			var dishnametxt_4 = oAttributedDishes[oRandom_4].dish_name;
+			
+			var oImg_1 = document.getElementById("img_1");
+			var oImg_2 = document.getElementById("img_2");
+			var oImg_3 = document.getElementById("img_3");
+			var oImg_4 = document.getElementById("img_4");
+			
+			var oDishName_1 = document.getElementById("txt_1");
+			var oDishName_2 = document.getElementById("txt_2");
+			var oDishName_3 = document.getElementById("txt_3");
+			var oDishName_4 = document.getElementById("txt_4");
+
+			
+			var oTxtNode_1 = document.createTextNode(dishnametxt_1);
+			var oTxtNode_2 = document.createTextNode(dishnametxt_2);
+			var oTxtNode_3 = document.createTextNode(dishnametxt_3);
+			var oTxtNode_4 = document.createTextNode(dishnametxt_4);
+			
+			var oHyperlink_1 = document.getElementById("hyperlink_1");
+			var oHyperlink_2 = document.getElementById("hyperlink_2");
+			var oHyperlink_3 = document.getElementById("hyperlink_3");
+			var oHyperlink_4 = document.getElementById("hyperlink_4");
+			
+			oDishName_1.innerHTML="";
+			oDishName_2.innerHTML="";
+			oDishName_3.innerHTML="";
+			oDishName_4.innerHTML="";
+						
+			oHyperlink_1.href = "/static/menu/" + dishnametxt_1 +".html";
+			oHyperlink_2.href = "/static/menu/" + dishnametxt_2 +".html";
+			oHyperlink_3.href = "/static/menu/" + dishnametxt_3 +".html";
+			oHyperlink_4.href = "/static/menu/" + dishnametxt_4 +".html";
+			
+			oImg_1.src = "/static/menu/img/" + dishnametxt_1 + ".jpg";
+			oImg_2.src = "/static/menu/img/" + dishnametxt_2 + ".jpg";
+			oImg_3.src = "/static/menu/img/" + dishnametxt_3 + ".jpg";
+			oImg_4.src = "/static/menu/img/" + dishnametxt_4 + ".jpg";
+			
+			
+			
+			oDishName_1.appendChild(oTxtNode_1);
+			oDishName_2.appendChild(oTxtNode_2);
+			oDishName_3.appendChild(oTxtNode_3);
+			oDishName_4.appendChild(oTxtNode_4);
+		}
+		
+</script>
